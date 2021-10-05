@@ -1,0 +1,86 @@
+service: sls-socrata-norfolk-integration
+
+frameworkVersion: '2'
+
+configValidationMode: error
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-python-requirements
+ 
+custom:
+  pythonRequirements:
+    dockerizePip: non-linux
+
+provider:
+  name: aws
+  runtime: python3.8
+  profile: personal
+  lambdaHashingVersion: 20201221
+  memorySize: 512
+  stage: dev
+  region: us-east-1
+
+
+functions:
+  invoker:
+    handler: src/functions/invoker.invoke
+    environment:
+      DAILY_LOOKBACK_DAYS: 2
+      SOCRATA_API_TOKEN: "GlDpNs6BxylbpumxZ1svqIFGv"
+      SQS_QUEUE: ${self:service}-${self:provider.stage}-event-queue
+    events:
+      - schedule: rate(1 day)
+    iamRoleStatementsName: ${self:service}-${self:provider.stage}-invoker-role
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - sqs:SendMessage
+        Resource:
+          - Fn::GetAtt: [ SQSQueue, Arn ]
+    reservedConcurrency: 1
+    memorySize: 2048
+    timeout: 900
+
+  transcoder:
+    handler: src/functions/transcoder.transcode
+    environment:
+      DB_ENGINE_STRING: "postgresql"
+      DB_ENDPOINT:      "frontline-postgresql.cvym3s2dsr13.us-east-1.rds.amazonaws.com"
+      DB_PORT:          "5432"
+      DB_NAME:          "db01"
+      DB_USER:          "frontlinegig"
+      DB_PWD:           "YourPwdShouldBeLongAndSecure!"
+    iamRoleStatementsName: ${self:service}-${self:provider.stage}-transcoder-role
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - sqs:DeleteMessage
+          - sqs:ChangeMessageVisibility
+          - sqs:ListQueues
+          - sqs:ListQueueTags
+          - sqs:GetQueueAttributes
+          - sqs:GetQueueUrl
+          - sqs:ReceiveMessage
+          - sqs:SendMessage
+        Resource: 
+          - Fn::GetAtt: [ SQSQueue, Arn ]
+    events:
+      - sqs:
+          arn: 
+            Fn::GetAtt: 
+              - SQSQueue
+              - Arn
+          batchSize: 100
+          maximumBatchingWindow: 30
+    memorySize: 256
+    timeout: 900
+    reservedConcurrency: 5
+
+resources:
+  Resources:
+    SQSQueue:
+      Type: "AWS::SQS::Queue"
+      Properties:
+        QueueName: ${self:service}-${self:provider.stage}-event-queue 
+        VisibilityTimeout: 900
