@@ -1,4 +1,5 @@
-# Project Score
+# Project Description
+Configuration in this directory creates pipeline and AWS resources that processes Socrata Norfold service requests, geocodes location addresses and writes results into Frontline GIG Postgresql DB. 
 
 
 ## Prerequisites
@@ -47,3 +48,9 @@ DB_NAME                     DB name, taken from terraform_aws_rds configuration
 DB_USER                     DB user, taken from terraform_aws_rds configuration
 DB_PWD                      DB password, taken from terraform_aws_rds configuration
 
+### 2. Run
+
+```bash
+$ cd serverless_service_pipeline
+$ sls deploy
+```

@@ -111,6 +111,7 @@ locals {
 ## 2. Run:
 
 ```bash
+$ cd terraform_aws_rds
 $ terraform init
 $ terraform plan
 $ terraform apply
