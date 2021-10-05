@@ -17,6 +17,13 @@ Follow instructions from [Serverless.com](https://www.serverless.com/framework/d
 ### 1. Edit the configuration
 
 ```sls
+provider:
+  ...
+  profile: personal
+  ...
+
+...
+
 functions:
   invoker:
     handler: src/functions/invoker.invoke
@@ -42,6 +49,7 @@ functions:
 
 | Name | Description |
 |------|-------------|
+| profile | Frontline GIG AWS profile name from ~/.aws/credentials |
 | DAILY_LOOKBACK_DAYS | Number of lookback days to be processed every run. If DB was temporary not responsive given the lookback days, next N daily runs will catch up oin the missed service requests (redundancy) |
 | SOCRATA_API_TOKEN | Socrata API Token. Create by following the [link](https://data.norfolk.gov/login) |
 | DB_ENGINE_STRING | DB type intentified, won't change as far as DB is Postgresql |
