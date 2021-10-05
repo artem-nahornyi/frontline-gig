@@ -69,7 +69,7 @@ $ sls deploy
 ```
 
 
-### Backfilling Past Data
+# Backfilling Past Data
 
 1. Go to https://console.aws.amazon.com/console/
 2. Login using Frontline GIG credentials
