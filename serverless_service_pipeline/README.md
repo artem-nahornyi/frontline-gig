@@ -39,7 +39,13 @@ functions:
 ```
 
 #### Variables:
-DAILY_LOOKBACK_DAYS         Number of lookback days to be processed every day (redundancy)
+
+| Name | Description |
+|------|-------------|
+| <a name="DAILY_LOOKBACK_DAYS">DAILY_LOOKBACK_DAYS</a> Number of lookback days to be processed every day (redundancy) | Number of lookback days to be processed every day (redundancy) |
+| <a name="SOCRATA_API_TOKEN">SOCRATA_API_TOKEN</a> Number of lookback days to be processed every day (redundancy) | Socrata API Token. Create by following the [link](https://data.norfolk.gov/login) |
+
+         
 
 SOCRATA_API_TOKEN           Socrata API Token. Create by following the [link](https://data.norfolk.gov/login)
 
