@@ -1,4 +1,4 @@
-# Project Scope
+# Project Description
 
 Configuration in this directory creates a set of RDS resources including Public DB instance, DB subnet group and DB parameter group.
 
