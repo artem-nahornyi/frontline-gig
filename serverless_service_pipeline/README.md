@@ -43,23 +43,13 @@ functions:
 | Name | Description |
 |------|-------------|
 | DAILY_LOOKBACK_DAYS | Number of lookback days to be processed every day (redundancy) |
-| <a name="SOCRATA_API_TOKEN">SOCRATA_API_TOKEN</a> Number of lookback days to be processed every day (redundancy) | Socrata API Token. Create by following the [link](https://data.norfolk.gov/login) |
-
-         
-
-SOCRATA_API_TOKEN           Socrata API Token. Create by following the [link](https://data.norfolk.gov/login)
-
-DB_ENGINE_STRING            DB type intentified, won't change as far as DB is Postgresql
-
-DB_ENDPOINT                 Public DB address, taken from terraform_aws_rds deployment output
-
-DB_PORT                     DB port, taken from terraform_aws_rds configuration
-
-DB_NAME                     DB name, taken from terraform_aws_rds configuration
-
-DB_USER                     DB user, taken from terraform_aws_rds configuration
-
-DB_PWD                      DB password, taken from terraform_aws_rds configuration
+| SOCRATA_API_TOKEN | Socrata API Token. Create by following the [link](https://data.norfolk.gov/login) |
+| DB_ENGINE_STRING | DB type intentified, won't change as far as DB is Postgresql |
+| DB_ENDPOINT | Public DB address, taken from terraform_aws_rds deployment output |
+| DB_PORT | DB port, taken from terraform_aws_rds configuration |
+| DB_NAME | DB name, taken from terraform_aws_rds configuration |
+| DB_USER | DB user, taken from terraform_aws_rds configuration |
+| DB_PWD | DB password, taken from terraform_aws_rds configuration |
 
 ### 2. Run
 
