@@ -42,7 +42,7 @@ functions:
 
 | Name | Description |
 |------|-------------|
-| DAILY_LOOKBACK_DAYS | Number of lookback days to be processed every day (redundancy) |
+| DAILY_LOOKBACK_DAYS | Number of lookback days to be processed every run. If DB was temporary not responsive given the lookback days, next N daily runs will catch up oin the missed service requests (redundancy) |
 | SOCRATA_API_TOKEN | Socrata API Token. Create by following the [link](https://data.norfolk.gov/login) |
 | DB_ENGINE_STRING | DB type intentified, won't change as far as DB is Postgresql |
 | DB_ENDPOINT | Public DB address, taken from terraform_aws_rds deployment output |
