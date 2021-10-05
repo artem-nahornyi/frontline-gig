@@ -44,7 +44,7 @@ functions:
       DB_PWD:           "YourPwdShouldBeLongAndSecure!"
 
   ...
-  
+
 ```
 
 #### Variables:
@@ -67,3 +67,30 @@ functions:
 $ cd serverless_service_pipeline
 $ sls deploy
 ```
+
+
+### Backfilling Past Data
+
+1. Go to https://console.aws.amazon.com/console/
+2. Login using Frontline GIG credentials
+3. Open Lambda Service (type "Lambda" in the search bar and click on the Lamda service)
+4. Go to "Functions"
+5. Open "sls-socrata-norfolk-integration-dev-invoker"
+6. Select "Test" Tab
+7. Create Test Event
+7.1 Give it name
+7.2 Create json payload in the code section. Payload example:
+```json
+{"backfill":true, "start_date":"2021-01-01", "end_date":"2021-06-01"}
+```
+7.3 Click "Test" Button
+
+| Name | Description |
+|------|-------------|
+| backfill | BOOL, indicates whether you want to trigger backfill, true if yes |
+| start_date | String of yyyy-mm-dd format, start date for backfill, inclusive |
+| end_date | String of yyyy-mm-dd format, end date for backfill, inclusive | 
+
+> Note: This instruction assumes that the pipeline was already deployed to AWS
+> Note: If you can not find the lambda function from 5., make sure you secelted the right region (upper right corner). Region in AWS console must match the region from configuration file
+
