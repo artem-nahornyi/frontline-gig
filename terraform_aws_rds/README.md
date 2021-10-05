@@ -127,6 +127,9 @@ $ terraform init
 $ terraform plan
 $ terraform apply
 ```
+> Save the text from OUTPUTS section produced in the very end of "terraform apply", it will include information that will be needed by other services, such as public database address that is known only after provision 
+
+---
 
 > Note that this example may create resources which cost money. Run `terraform destroy` when you don't need these resources.
 
