@@ -106,6 +106,17 @@ locals {
 }
 ```
 
+| Name | Description |
+|------|-------------|
+| name | terraform stack name |
+| region | AWS Region, "us-east-1" for Virginia, US |
+| db_name | DB Name, will be used by other services to connect to DB |
+| db_username | DB username, will be used by other services to connect to DB |
+| db_password | DB user password, will be used by other services to connect to DB. Note: do not use this user in every service. Where applicable, read-only user should be created and used instead |
+| db_instance_class | EC2 Instance, this recource may create costs |
+| db_allocated_storage | Storage Capacity in GB, this recource may create costs |
+| db_max_allocated_storage | Max pre-allocated storage, this recource may create costs |
+
 > Note: Do not push your configuration with credentials back to github after editing
 
 ## 2. Run:
