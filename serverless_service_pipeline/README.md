@@ -42,7 +42,9 @@ functions:
       DB_NAME:          "db01"
       DB_USER:          "frontlinegig"
       DB_PWD:           "YourPwdShouldBeLongAndSecure!"
+
   ...
+  
 ```
 
 #### Variables:
