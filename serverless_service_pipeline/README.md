@@ -93,5 +93,5 @@ $ sls deploy
 
 > Note: This instruction assumes that the pipeline was already deployed to AWS
 -----
-> Note: If you can not find the lambda function from 5., make sure you secelted the right region (upper right corner). Region in AWS console must match the region from configuration file
+> Note: If you can not find the lambda function from 5., make sure you secelted the right region (upper right corner). Region in AWS console must match the region from serverless.yml configuration file
 
