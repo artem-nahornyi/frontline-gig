@@ -1,4 +1,3 @@
-import subprocess
 import requests
 import inspect
 import logging
@@ -332,8 +331,6 @@ def transcode(sqs_event, context):
     # new geocoders can be added here
     # order matters, keep most accurate first
     geocoders = [osm_geocoder, gfg_geocoder]
-
-    geocoded_places = dict()
 
     for event_place in data.address.unique():
         event_place_address = event_place
